@@ -31,8 +31,16 @@ fun main() {
 class MainWindow : JFrame(), ActionListener {
 
     // Fields to hold the UI elements
-    private lateinit var greetingLabel: JLabel
-    private lateinit var helloButton: JButton
+    private lateinit var redDownButton: JButton
+    private lateinit var redUpButton: JButton
+    private lateinit var greenUpButton: JButton
+    private lateinit var greenDownButton: JButton
+    private lateinit var blueUpButton: JButton
+    private lateinit var blueDownButton: JButton
+    private lateinit var RLabel: JLabel
+    private lateinit var GLabel: JLabel
+    private lateinit var BLabel: JLabel
+
 
     /**
      * Configure the UI and display it
@@ -50,7 +58,7 @@ class MainWindow : JFrame(), ActionListener {
      */
     private fun configureWindow() {
         title = "Kotlin Swing GUI Demo"
-        contentPane.preferredSize = Dimension(600, 350)
+        contentPane.preferredSize = Dimension(500, 350)
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         isResizable = false
         layout = null
@@ -64,17 +72,66 @@ class MainWindow : JFrame(), ActionListener {
     private fun addControls() {
         val defaultFont = Font(Font.SANS_SERIF, Font.PLAIN, 30)
 
-        greetingLabel = JLabel("Hello, World!")
-        greetingLabel.horizontalAlignment = SwingConstants.CENTER
-        greetingLabel.bounds = Rectangle(50, 50, 500, 100)
-        greetingLabel.font = defaultFont
-        add(greetingLabel)
+        redUpButton = JButton("+")
+        redUpButton.bounds = Rectangle(220,40,30,30)
+        redUpButton.font = defaultFont
+        redUpButton.background = Color.RED
+        redUpButton.addActionListener(this)     // Handle any clicks
+        add(redUpButton)
 
-        helloButton = JButton("Click Me!")
-        helloButton.bounds = Rectangle(50,200,500,100)
-        helloButton.font = defaultFont
-        helloButton.addActionListener(this)     // Handle any clicks
-        add(helloButton)
+        redDownButton = JButton("-")
+        redDownButton.bounds = Rectangle(220, 80, 30 , 30)
+        redDownButton.font = defaultFont
+        redDownButton.background = Color.RED
+        redDownButton.addActionListener(this)
+        add(redDownButton)
+
+        greenUpButton = JButton("+")
+        greenUpButton.bounds = Rectangle(220,140,30,30)
+        greenUpButton.font = defaultFont
+        greenUpButton.background = Color.GREEN
+        greenUpButton.addActionListener(this)     // Handle any clicks
+        add(greenUpButton)
+
+        greenDownButton = JButton("-")
+        greenDownButton.bounds = Rectangle(220, 180, 30 , 30)
+        greenDownButton.font = defaultFont
+        greenDownButton.background = Color.GREEN
+        greenDownButton.addActionListener(this)
+        add(greenDownButton)
+
+        blueUpButton = JButton("+")
+        blueUpButton.bounds = Rectangle(220,240,30,30)
+        blueUpButton.font = defaultFont
+        blueUpButton.background = Color.BLUE
+        blueUpButton.addActionListener(this)     // Handle any clicks
+        add(blueUpButton)
+
+        blueDownButton = JButton("-")
+        blueDownButton.bounds = Rectangle(220, 280, 30 , 30)
+        blueDownButton.font = defaultFont
+        blueDownButton.background = Color.BLUE
+        blueDownButton.addActionListener(this)
+        add(blueDownButton)
+
+        RLabel = JLabel("R")
+        RLabel.bounds = Rectangle (40, 40, 70, 30 )
+        RLabel.font = defaultFont
+        RLabel.foreground = Color.RED
+        add(RLabel)
+
+        GLabel = JLabel("G")
+        GLabel.bounds = Rectangle (40, 140, 70, 30)
+        GLabel.font = defaultFont
+        GLabel.foreground = Color.GREEN
+        add(GLabel)
+
+        BLabel = JLabel("B")
+        BLabel.bounds = Rectangle (40 ,240 ,70 ,30 )
+        BLabel.font = defaultFont
+        BLabel.foreground = Color.BLUE
+        add(BLabel)
+
     }
 
 
@@ -83,9 +140,7 @@ class MainWindow : JFrame(), ActionListener {
      */
     override fun actionPerformed(e: ActionEvent?) {
         when (e?.source) {
-            helloButton -> {
-                greetingLabel.text = "You clicked the button!"
-            }
+
         }
     }
 
